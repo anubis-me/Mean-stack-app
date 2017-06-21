@@ -12,7 +12,7 @@ angular.module('usercontrollers',['userservices'])
                   app.loading=false;
                   app.successMsg = data.data.message+'....Redirecting';
                   $timeout(function () {
-                      $location.path('/')
+                      $location.path('/');
                   },2000);
 
               }

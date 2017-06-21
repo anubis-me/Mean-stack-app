@@ -1,6 +1,6 @@
 angular.module('userservices',[])
 .factory('user',function ($http) {
-    userfactory={};
+    var userfactory={};
 
     userfactory.create=function(regdata){
         return $http.post('/api/users',regdata);
