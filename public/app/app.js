@@ -1,5 +1,1 @@
-angular.module('userApp',['appRoutes'])
-
-    .config(function () {
-        console.log('testing');
-    });
+angular.module('userApp',['appRoutes','usercontrollers','userservices','ngAnimate']);

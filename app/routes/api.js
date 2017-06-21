@@ -7,15 +7,16 @@ module.exports = function (router){
     user.password = req.body.password;
     user.email = req.body.email;
     if (req.body.username==null || req.body.username =='' || req.body.password == '' || req.body.password==null || req.body.email == '' || req.body.email==null) {
-        res.send('Ensure provided');
+
+        res.json({success:false,message:'Ensure username and email or password were provided'});
     }
     else{
         user.save(function (err) {
             if(err) {
-                res.send("Username or email already exist");
+                res.json({success:false,message:"Username or email already exist"});
             }
             else{
-                res.send('User Created !');
+                res.json({success:true,message:'User Created !'});
             }
         });
     }
