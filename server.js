@@ -1,12 +1,14 @@
-var express = require('express');
-var app = express();
-var port =process.env.PORT ||8080;
-var morgan = require('morgan');
-var mongoose = require('mongoose');
-var router = express.Router();
-var appRoutes = require('./app/routes/api')(router);
-var bodyParser = require('body-parser');
-var path = require('path');
+var express     = require('express');
+var app         = express();
+var port        = process.env.PORT ||8080;
+var morgan      = require('morgan');
+var mongoose    = require('mongoose');
+var router      = express.Router();
+var appRoutes   = require('./app/routes/api')(router);
+var bodyParser  = require('body-parser');
+var path        = require('path');
+var passport    = require('passport');
+var social      = require('./app/passport/passport')(app,passport);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());

@@ -1,12 +1,26 @@
 angular.module('maincontroller',['authservices'])
-.controller('mainctrl',function (auth, $timeout, $location) {
+.controller('mainctrl',function (auth, $timeout, $location,$rootScope) {
     var app=this;
-    if(auth.isLoggedIn()){
-        console.log('succcess');
-    }
-    else{
-        console.log('failure');
-    }
+
+    app.loadme=false;
+    $rootScope.$on('$routeChangeStart',function () {
+
+        if(auth.isLoggedIn()){
+            app.isLoggedIn=true;
+            auth.getUser().then(function (data) {
+                console.log(data.data.username);
+                app.username=data.data.username;
+                app.useremail=data.data.email;
+                app.loadme=true;
+            });
+        }
+        else{
+            app.isLoggedIn=false;
+            app.username='';
+            app.loadme=true;
+        }
+    });
+
     this.doLogin= function (logindata) {
         app.errorMsg=false;
         app.loading=true;
@@ -16,8 +30,11 @@ angular.module('maincontroller',['authservices'])
             if(data.data.success){
                 app.loading=false;
                 app.successMsg = data.data.message+'....Redirecting';
+
                 $timeout(function () {
                         $location.path('/about');
+                        app.logindata='';
+                        app.successMsg=false;
                      },2000);
             }
             else{

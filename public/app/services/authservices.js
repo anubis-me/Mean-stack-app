@@ -18,6 +18,14 @@ angular.module('authservices',[])
                 return false;
             }
         };
+        authfactory.getUser=function () {
+          if(AuthToken.getToken()){
+              return $http.post('/api/me');
+          }
+          else {
+              $q.reject({message:'User has no token'});
+          }
+        };
 
 
         authfactory.logout=function () {
@@ -43,3 +51,13 @@ angular.module('authservices',[])
       };
       return authtokenfactory;
   })
+
+.factory('AuthInterceptors',function (AuthToken) {
+    var authInterceptorsFactory={};
+    authInterceptorsFactory.request = function (config) {
+        var token = AuthToken.getToken();
+        if(token) config.headers['x-access-token']=token;
+        return config;
+    };
+    return authInterceptorsFactory;
+});
