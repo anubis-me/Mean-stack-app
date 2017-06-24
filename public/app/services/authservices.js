@@ -18,6 +18,10 @@ angular.module('authservices',[])
                 return false;
             }
         };
+       // auth.facebook(token);
+        authfactory.facebook=function (token) {
+            AuthToken.setToken(token);
+        }
         authfactory.getUser=function () {
           if(AuthToken.getToken()){
               return $http.post('/api/me');

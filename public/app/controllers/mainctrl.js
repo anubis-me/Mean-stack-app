@@ -1,5 +1,5 @@
 angular.module('maincontroller',['authservices'])
-.controller('mainctrl',function (auth, $timeout, $location,$rootScope) {
+.controller('mainctrl',function (auth, $timeout, $location,$rootScope,$window) {
     var app=this;
 
     app.loadme=false;
@@ -19,8 +19,11 @@ angular.module('maincontroller',['authservices'])
             app.username='';
             app.loadme=true;
         }
+        if($location.hash()=='_=_') $location.hash(null);
     });
-
+    this.facebook=function () {
+        $window.location=$window.location.protocol +'//'+ $window.location.host +'/auth/facebook';
+    }
     this.doLogin= function (logindata) {
         app.errorMsg=false;
         app.loading=true;
