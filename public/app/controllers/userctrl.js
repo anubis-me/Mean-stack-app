@@ -34,4 +34,16 @@ angular.module('usercontrollers',['userservices'])
             $location.path('/');
         }
 
-    });
+    })
+
+.controller('twitterCtrl',function ($routeParams,$window,auth,$location) {
+    var app=this;
+    if($window.location.pathname=='/twittererror'){
+        app.errorMsg="Twitter email not found in database";
+    }
+    else{
+        auth.facebook($routeParams.token);
+        $location.path('/');
+    }
+
+});

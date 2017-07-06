@@ -24,6 +24,9 @@ angular.module('maincontroller',['authservices'])
     this.facebook=function () {
         $window.location=$window.location.protocol +'//'+ $window.location.host +'/auth/facebook';
     }
+    this.twitter=function () {
+        $window.location=$window.location.protocol +'//'+ $window.location.host +'/auth/twitter';
+    }
     this.doLogin= function (logindata) {
         app.errorMsg=false;
         app.loading=true;
