@@ -27,6 +27,9 @@ angular.module('maincontroller',['authservices'])
     this.twitter=function () {
         $window.location=$window.location.protocol +'//'+ $window.location.host +'/auth/twitter';
     }
+    this.google=function () {
+        $window.location=$window.location.protocol+'//'+$window.location.host+'/auth/google';
+    }
     this.doLogin= function (logindata) {
         app.errorMsg=false;
         app.loading=true;

@@ -8,7 +8,7 @@ var appRoutes   = require('./app/routes/api')(router);
 var bodyParser  = require('body-parser');
 var path        = require('path');
 var passport    = require('passport');
-var social      = require('./app/passport/passport')(app,passport);
+var social     = require('./app/passport/passport')(app,passport);
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());

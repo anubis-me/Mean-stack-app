@@ -35,6 +35,16 @@ angular.module('usercontrollers',['userservices'])
         }
 
     })
+    .controller('googleCtrl',function($routeParams,auth,$location,$window) {
+        var app = this;
+        if($window.location.pathname=='/googleerror'){
+            app.errorMsg="Google email not found in database";
+        }
+        else{
+            auth.facebook($routeParams.token);
+            $location.path('/');
+        }
+    })
 
 .controller('twitterCtrl',function ($routeParams,$window,auth,$location) {
     var app=this;

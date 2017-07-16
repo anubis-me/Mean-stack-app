@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>User Registration</h1>
+    <h1>User Login</h1>
 </div>
 
 <form ng-submit="main.doLogin(logindata);">
@@ -14,6 +14,7 @@
     <button class="btn btn-primary" type="submit">Login</button>&nbsp
     <button type="button" class="btn btn-success" ng-click="main.facebook();">Facebook</button>
     <button type="button" class="btn btn-warning" ng-click="main.twitter();">Twitter</button>
+    <button type="button" class="btn btn-info" ng-click="main.google();">Google</button>
 
 </form>
 
@@ -35,4 +36,7 @@
 </div>
 <div class="row show-hide-message" ng-show="twitter.errorMsg">
     <div class="alert alert-danger">{{twitter.errorMsg}}</div>
+</div>
+<div class="row show-hide-message" ng-show="google.errorMsg">
+    <div class="alert alert-danger">{{google.errorMsg}}</div>
 </div>
