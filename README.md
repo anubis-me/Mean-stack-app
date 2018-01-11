@@ -1,5 +1,5 @@
 # mean-stack-app
-For learning Node.js and mongodb\
+For learning Node.js and mongodb
 
 This is an application demonstrating the basic components needed for a Single Page Application using MongoDB, ExpressJS, AngularJS, and NodeJS.
 
